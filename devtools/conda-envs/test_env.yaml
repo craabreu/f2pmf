@@ -14,7 +14,7 @@ dependencies:
   - pytest
   - pytest-cov
   - codecov
-  - pyyamml
+  - pyyaml
 
     # Pip-only installs
   #- pip:
