@@ -1,8 +1,10 @@
 """
-f2pmf.py
-RBF Regression from Gradient Samples
+.. module:: f2pmf
+   :platform: Unix, Windows
+   :synopsis: RBF Regression from Gradient Samples
 
-Handles the primary functions
+.. moduleauthor:: Charlles Abreu <abreu@eq.ufrj.br>
+
 """
 
 

@@ -1,7 +1,7 @@
 API Documentation
 =================
 
-.. autosummary::
-   :toctree: autosummary
+.. toctree::
+    :glob:
 
-   f2pmf.Variable
+    f2pmf
