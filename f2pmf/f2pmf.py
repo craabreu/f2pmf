@@ -6,29 +6,46 @@ Handles the primary functions
 """
 
 
-def canvas(with_attribution=True):
+class Variable:
     """
-    Placeholder function to show example docstring (NumPy format)
-
-    Replace this function and doc string for your own project
+    One of the inputs of the Radial Basis Function network.
 
     Parameters
     ----------
-    with_attribution : bool, Optional, default: True
-        Set whether or not to display who the quote is from
+        id : str
+            A valid identifier string for this variable.
+        min_value : float
+            The minimum allowable value for this variable.
+        max_value : float
+            The maximum allowable value for this  variable.
+        periodic : bool
+            Whether the variable is periodic with period `L = max_value - min_value`.
 
-    Returns
+    Example
     -------
-    quote : str
-        Compiled string including quote and optional attribution
+        >>> import f2pmf
+        >>> import numpy as np
+        >>> f2pmf.Variable('psi', -np.pi, np.pi, True)
+        <psi in [-3.141592653589793, 3.141592653589793], periodic>
+
     """
+    def __init__(self, id, min_value, max_value, periodic):
+        self.id = id
+        self.min_value = min_value
+        self.max_value = max_value
+        self.periodic = periodic
 
-    quote = "The code is but a canvas to our imagination."
-    if with_attribution:
-        quote += "\n\t- Adapted from Henry David Thoreau"
-    return quote
+    def __repr__(self):
+        status = 'periodic' if self.periodic else 'non-periodic'
+        return f'<{self.id} in [{self.min_value}, {self.max_value}], {status}>'
 
+    def __getstate__(self):
+        return dict(
+            id=self.id,
+            min_value=self.min_value,
+            max_value=self.max_value,
+            periodic=self.periodic,
+        )
 
-if __name__ == "__main__":
-    # Do something if this file is invoked on its own
-    print(canvas())
+    def __setstate__(self, kw):
+        self.__init__(**kw)

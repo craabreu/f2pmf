@@ -4,7 +4,7 @@ RBF Regression from Gradient Samples
 """
 
 # Add imports here
-from .f2pmf import *
+from .f2pmf import Variable  # noqa: F401, F403
 
 # Handle versioneer
 from ._version import get_versions
